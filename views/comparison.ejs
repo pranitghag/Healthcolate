@@ -1,0 +1,120 @@
+<% include partials/header %>
+<div class="container">
+    <header class="jumbotron">
+        <h4>Comparison</h4>
+    </header>
+
+  <%  var weight=[]; %>
+  <%  var height=[];%>
+  <%  var bmi=[];%>
+  <%  var cholesterol=[];%>
+  <%  var sleepPatterns=[];%>
+  <%  var bloodSugar=[];%>
+
+  <%  var weight_new;%>
+  <%  var height_new;%>
+  <%  var bmi_new;%>
+  <%  var cholesterol_new;%>
+  <%  var sleepPatterns_new;%>
+  <%  var bloodSugar_new;%>
+
+    <% for(i in data){%>
+    <%  weight.push( data[i].weight)%>
+    <%  height.push( data[i].height)%>
+    <%  bmi.push( data[i].bmi)%>
+    <%  cholesterol.push( data[i].cholesterol)%>
+    <%  sleepPatterns.push(data[i].sleepPatterns)%>
+    <%  bloodSugar.push( data[i].bloodSugar)%>
+  <%  }%>
+  <%    const arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;%>
+  <%    var avgWeight = arrAvg(weight);%>
+  <%    var avgHeight = arrAvg(height);%>
+  <%    var avgBMI = arrAvg(bmi);%>
+  <%    var avgcholesterol= arrAvg(cholesterol);%>
+  <%    var avgSleepPatterns = arrAvg(sleepPatterns);%>
+  <%    var avgBloodSugar = arrAvg(bloodSugar);%>
+
+
+
+    <%  var timeStamps = [0];%>
+    <% allData.forEach(function(data){ %>
+        <%  timeStamps.push(data.timeStamp)%>
+
+    <%})%>
+
+    <% var max = timeStamps.reduce(function(a,b){ %>
+    <%       return Math.max(a,b);%>
+    <%})%>
+    <% allData.forEach(function(data){ %>
+    <%  if(data.timeStamp == max){ %>
+      <%    weight_new =  data.weight%>
+      <%    height_new =  data.height%>
+      <%    bmi_new =  data.bmi%>
+      <%    cholesterol_new =  data.cholesterol%>
+      <%    sleepPatterns_new =  data.sleepPatterns%>
+      <%    bloodSugar_new =  data.bloodSugar%>
+      <%  } %>
+    <%})%>
+
+    <div class="list-group list-group-flush">
+    <li >The average weight is <%= avgWeight%> kg<br></li>
+    <% if (weight_new == undefined){%>
+          Entry does not exist. <br><br>
+    <% }else if(weight_new<avgWeight){ %>
+
+      Your weight is less than the average weight.<br>
+      <a href="https://www.lipid.org/sites/default/files/heart-healthy_eating_if_you_are_underweight_final.pdf">Some tips for you.</a><br><br>
+    <% } else{%>
+      Your weight is more than the average weight.<br>
+      <a href="https://www.healthline.com/nutrition/how-to-lose-weight-as-fast-as-possible">Some tips for you.</a><br><br>
+      <% } %>
+
+    <li >  The average height is <%= avgHeight%> cm<br></li>
+    <%  if (height_new == undefined) { %>
+          Entry does not exist. <br><br>
+      <% }else if(height_new<avgHeight){ %>
+
+        Your height is less than the average height.<br><br>
+      <% } else {%>
+        Your height is more than the average height.<br><br>
+        <% } %>
+
+      <li >  The average BMI is <%= avgBMI%><br></li>
+        <%  if (bmi_new == undefined) { %>
+              Entry does not exist. <br><br>
+          <% }else if(bmi_new<avgBMI){ %>
+
+          Your BMI is less than the average BMI.<br>
+          <a href="https://www.healthline.com/health/exercise-to-gain-weight">Some tips for you</a><br><br>
+        <% } else {%>
+          Your BMI is more than the average BMI.<br>
+          <a href="https://www.healthline.com/health/fitness-exercise/exercise-for-obese-people#1">Some tips for you</a><br><br>
+          <% } %>
+
+      <li >    The average cholesterol is <%= avgcholesterol%><br></li>
+          <%  if (cholesterol_new == undefined) { %>
+                Entry does not exist. <br><br>
+            <% }else if(cholesterol_new<avgcholesterol){ %>
+            Your cholesterol is less than the average cholesterol.<br>
+            <a href="https://www.mayoclinic.org/diseases-conditions/high-blood-cholesterol/in-depth/reduce-cholesterol/art-20045935">Some tips for you</a><br><br>
+          <% } else {%>
+            Your cholesterol is more than the average cholesterol.<br>
+            <a href="https://www.mayoclinic.org/diseases-conditions/high-blood-cholesterol/in-depth/reduce-cholesterol/art-20045935">Some tips for you</a><br><br>
+            <% } %>
+
+        <li>    The average Sleep hours is <%= avgSleepPatterns%> hours.<br></li>
+            <%  if (sleepPatterns_new == undefined) { %>
+                  Entry does not exist. <br><br>
+              <% }else if(sleepPatterns_new<avgSleepPatterns){ %>
+
+              Your sleep hours are less than the average sleep hours.<br>
+              <a href="https://www.healthline.com/nutrition/17-tips-to-sleep-better">Some tips for you</a><br><br>
+            <% } else {%>
+              Your sleep hours are more than the average sleep hours.<br>
+              <a href="https://www.healthline.com/health/healthy-sleep/how-to-sleep-less">Some tips for you</a><br><br>
+              <% } %>
+              </div>
+
+</div>
+
+<% include partials/footer %>

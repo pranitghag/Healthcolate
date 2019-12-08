@@ -1,0 +1,38 @@
+<% include partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <h4><%=currentUser.username%>'s data</h4>
+    </header>
+    <%  var timeStamps = [0];%>
+    <% myData.forEach(function(data){ %>
+        <%  timeStamps.push(data.timeStamp)%>
+
+    <%})%>
+
+    <% var max = timeStamps.reduce(function(a,b){ %>
+    <%       return Math.max(a,b);%>
+    <%})%>
+
+    <% myData.forEach(function(data){ %>
+    
+    <%  if(data.timeStamp == max){ %>
+
+
+        <div class="list-group list-group-flush">
+            <h4><%=data.name%></h4>
+            <li class="list-group-item">Weight: <%=data.weight%> kg</li>
+            <li class="list-group-item">Height: <%=data.height%> cm</li>
+            <li class="list-group-item">BMI(Body Mass Index): <%=data.bmi%></li>
+            <li class="list-group-item">Sleep Patterns: <%=data.sleepPatterns%> hours of sleep</li>
+            <li class="list-group-item">Cholesterol: <%=data.cholesterol%></li>
+            <li class="list-group-item">Blood Sugar: <%=data.bloodSugar%></li>
+            <li class="list-group-item">Blood Pressure (Systolic): <%=data.bloodPressure_systolic%> bpm</li>
+            <li class="list-group-item">Blood Pressure (Diastolic): <%=data.bloodPressure_diastolic%> bpm</li>
+        </div>
+    <%  } %>
+          <% });%>
+</div>
+
+
+<% include partials/footer %>

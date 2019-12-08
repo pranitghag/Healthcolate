@@ -1,0 +1,31 @@
+<% include partials/header %>
+
+<div class="container">
+  <header class="jumbotron">
+      <h4>Enter Your Data</h4>
+  </header>
+    <div class="row">
+      <div style="margin:0 auto">
+      <form action="/mydata" method="POST">
+          <input class="form-control" type="text" placeholder = "Weight" name="weight" value=""><br>
+
+          <input class="form-control" type="text" placeholder = "Height" name="height" value=""><br>
+
+
+          <input class="form-control" type="text" placeholder = "SleepPatterns" name="spatterns" value=""><br>
+
+          <input class="form-control" type="text" placeholder = "Cholesterol" name="cholesterol" value=""><br>
+
+          <input class="form-control" type="text" placeholder = "BloodSugar" name="bsugar" value=""><br>
+
+          <input class="form-control" type="text" placeholder = "BloodPressure Systolic" name="bps" value=""><br>
+
+          <input class="form-control" type="text" placeholder = "BloodPressure Diastolic" name="bpd" value=""><br>
+          <button class="btn btn-large btn-dark btn-lock">Submit</button>
+      </form>
+      </div>
+    </div>
+</div>
+
+
+<%include partials/footer%>
