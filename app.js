@@ -5,8 +5,8 @@ var crypto = require("crypto");
 var hash = crypto.createHash('sha256');
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
-//mongoose.connect("mongodb://localhost/health_db");
-mongoose.connect("mongodb+srv://pranit:softengg@cluster0-ya4na.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect("mongodb://localhost/health_db");
+
 var app = express();
 var bodyParser = require("body-parser");
 var HealthParameter = require("./models/healthparameter");
@@ -190,6 +190,8 @@ function isLoggedIn(req,res,next){
     res.render("login");
 }
 
-app.listen(process.env.PORT,process.env.IP,function(){
+// app.listen(process.env.PORT,process.env.IP,function(){
+app.listen(3000,process.env.IP,function(){
     console.log("HealthColate+ server has started.");
 });
+
